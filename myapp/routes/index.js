@@ -13,10 +13,22 @@ router.get('/', function(req, res, next) {
 
   }
   //
-  res.cookie('mycookie','choco').cookie('mycookie2','strawberry');
+  res.cookie('mycookie','choco',{maxAge: 900000}).cookie('mycookie2','strawberry');
   console.log(cookies.mycookie);
   res.render('index', { title: 'To do list' });
 });
 
+router.get('/loginform',function(req,res,next){
+  res.render('join/loginform');
+});
+
+router.post('/login',function(req,res,next){
+  var post = req.body.myemail;
+  console.log(post);
+  res.send(post);
+});
+
 module.exports = router;
+
+
  
