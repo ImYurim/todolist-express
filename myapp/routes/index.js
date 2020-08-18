@@ -57,14 +57,10 @@ router.post('/login',function(req,res,next){
   //   //모든 쿠키들 중에서 이름으로 부르고 싶은경우 cookie 모듈을 이용해서 parse 해줘야함
   //   cookies = cookie.parse(req.headers.cookie);
   //   res.send(cookies.myemail);
-
-
-
   }
 
   var isOwner = authIsOwner(req,res);
-  console.log(isOwner);
-  res.end();
+  res.redirect('/');
 });
 
 module.exports = router;
