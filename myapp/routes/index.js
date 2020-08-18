@@ -40,8 +40,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'To do list', userStatus:userStatus ,isOwner:isOwner});
 });
 
-router.get('/loginform',function(req,res,next){
-  res.render('join/loginform');
+router.get('/loginform/',function(req,res,next){
+  var isOwner = authIsOwner(req,res);
+  if(!isOwner){
+    res.render('join/loginform');
+  }else{
+    res.clearCookie('myemail');
+    res.redirect('/');
+  }
+
 });
 
 
