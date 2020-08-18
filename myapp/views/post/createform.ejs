@@ -9,18 +9,20 @@
     <p>Welcome to <%= title %></p>
     <p>todolist 목록</p>
     <br>
-    
-
-
-
     <a href="/loginform"><%=userStatus%></a>
-    <%if (!isOwner){%>
-    <a href="/joinform">회원가입하기</a>
-    <%}%>
-    <br>
+
     <%if (isOwner){%>
+        <br>
       <a href="/createform">create</a>
+      <form action="/create">
+        <input type="text" name="title" placeholder="제목을 입력하세요.">
+        <br>
+        <input style="width: 170px; height: 300px;" type="text" name="todo"  placeholder="내용을 입력하세요.">
+        <br>
+        <input type="submit">
+    </form>
     <%}%>
+
   
 
   </body>

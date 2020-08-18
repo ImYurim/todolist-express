@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
     userStatus = '로그아웃하기';
   }
 
-  res.render('index', { title: 'To do list', userStatus:userStatus });
+  res.render('index', { title: 'To do list', userStatus:userStatus ,isOwner:isOwner});
 });
 
 router.get('/loginform',function(req,res,next){
@@ -62,6 +62,24 @@ router.post('/login',function(req,res,next){
   var isOwner = authIsOwner(req,res);
   res.redirect('/');
 });
+
+
+router.get('/createform',function(req,res,next){
+  var isOwner = authIsOwner(req,res);
+  var userStatus = '로그인하기';
+  if(isOwner){
+    userStatus = '로그아웃하기';
+  }
+  res.render('post/createform',{title: 'To do list',userStatus:userStatus ,isOwner:isOwner});
+});
+
+
+router.post('/create',function(req,res){
+  res.send(req.body.title);
+})
+
+
+
 
 module.exports = router;
 
