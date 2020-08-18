@@ -23,9 +23,12 @@ router.get('/loginform',function(req,res,next){
 });
 
 router.post('/login',function(req,res,next){
-  var post = req.body.myemail;
-  console.log(post);
-  res.send(post);
+  if(req.body.myemail!==undefined && req.body.mypassword !==undefined){
+    var email = req.body.myemail;
+    res.cookie('myemail',email);
+  }
+  console.log(req.headers.cookie);
+  res.send(req.headers.cookie);
 });
 
 module.exports = router;
