@@ -10,7 +10,8 @@
     <p>todolist 목록</p>
     <br>
     <a href="/loginform"><%=userStatus%></a>
+    <%if (!userStatus){%>
     <a href="/joinform">회원가입하기</a>
-
+    <%}%>
   </body>
 </html>
